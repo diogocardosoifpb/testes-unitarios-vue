@@ -1,32 +1,35 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect, beforeEach } from 'vitest'
-import ToggleButton from '@/components/ToggleButton.vue'
+import TodoList from '@/components/TodoList.vue'
 
-describe('ToggleButton.vue', () => {
+describe('TodoList.vue', () => {
   let wrapper
   beforeEach(() => {
     wrapper = mountWrapper()
   })
-  it('inicializa como "Inativo"', () => {
-    expect(wrapper.text()).toBe('Inativo')
+  it('inicializa com uma lista vazia', () => {
+    expect(wrapper.findAll('li')).toHaveLength(0)
   })
 
-  it('alterna para "Ativo" quando clicado', async () => {
-    const button = wrapper.find('button')
+  it('adiciona uma nova tarefa à lista', async () => {
+    const input = wrapper.find('input')
+    const addButton = wrapper.find('button')
 
-    await button.trigger('click')
-    expect(wrapper.text()).toBe('Ativo')
+    await input.setValue('Nova Tarefa')
+    await addButton.trigger('click')
+
+    expect(wrapper.findAll('li')).toHaveLength(1)
+    expect(wrapper.text()).toContain('Nova Tarefa')
   })
 
-  it('alterna para "Inativo" quando clicado novamente', async () => {
-    const button = wrapper.find('button')
+  it('não adiciona tarefa se o input estiver vazio', async () => {
+    const addButton = wrapper.find('button')
 
-    await button.trigger('click')
-    await button.trigger('click')
-    expect(wrapper.text()).toBe('Inativo')
+    await addButton.trigger('click')
+
+    expect(wrapper.findAll('li')).toHaveLength(0)
   })
 })
-
 function mountWrapper() {
-  return mount(ToggleButton)
+  return mount(TodoList)
 }

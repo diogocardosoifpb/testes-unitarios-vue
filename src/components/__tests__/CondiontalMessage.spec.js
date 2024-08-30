@@ -15,7 +15,7 @@ describe('ConditionalMessage.vue', () => {
     const button = wrapper.find('button')
 
     await button.trigger('click')
-    expect(wrapper.text()).toContain('Esta é uma mensagem condicional!')
+    expect(wrapper.find('p').text()).toContain('Esta é uma mensagem condicional!')
   })
 
   it('oculta a mensagem quando o botão é clicado novamente', async () => {

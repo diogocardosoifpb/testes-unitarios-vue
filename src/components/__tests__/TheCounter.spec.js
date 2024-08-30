@@ -8,18 +8,26 @@ describe('TheCounter.vue', () => {
     wrapper = mountWrapper()
   })
   it('inicializa com valor zero', () => {
-    expect(wrapper.text()).toContain('Contador: 0')
+    expect(wrapper.find('.text-h5').text()).toContain('Contador: 0')
   })
 
   it('decrementa o valor quando o botão de decrementar é clicado', async () => {
-    const decrementButton = wrapper.find('button:nth-of-type(1)')
+    await wrapper.setData({ count: 1 })
+    const decrementButton = wrapper.find('.bg-error')
     await decrementButton.trigger('click')
-    expect(wrapper.text()).toContain('Contador: 0')
+    expect(wrapper.find('.text-h5').text()).toContain('Contador: 0')
   })
   it('incrementa o valor quando o botão de incrementar é clicado', async () => {
-    const incrementButton = wrapper.find('button:nth-of-type(2)')
+    const incrementButton = wrapper.find('.bg-success')
     await incrementButton.trigger('click')
-    expect(wrapper.text()).toContain('Contador: 1')
+    expect(wrapper.find('.text-h5').text()).toContain('Contador: 1')
+  })
+  it('não decrementa o valor quando o botão de decrementar é clicado e o contador é 0', async () => {
+    await wrapper.setData({ count: 0 })
+    const decrementButton = wrapper.find('.bg-error')
+    expect(wrapper.find('.text-h5').text()).toContain('Contador: 0')
+    await decrementButton.trigger('click')
+    expect(wrapper.find('.text-h5').text()).toContain('Contador: 0')
   })
 })
 function mountWrapper() {

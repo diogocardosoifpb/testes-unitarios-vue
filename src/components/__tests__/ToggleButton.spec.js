@@ -8,14 +8,14 @@ describe('ToggleButton.vue', () => {
     wrapper = mountWrapper()
   })
   it('inicializa como "Inativo"', () => {
-    expect(wrapper.text()).toBe('Inativo')
+    expect(wrapper.find('button').text()).toBe('Inativo')
   })
 
   it('alterna para "Ativo" quando clicado', async () => {
     const button = wrapper.find('button')
 
     await button.trigger('click')
-    expect(wrapper.text()).toBe('Ativo')
+    expect(button.text()).toBe('Ativo')
   })
 
   it('alterna para "Inativo" quando clicado novamente', async () => {
