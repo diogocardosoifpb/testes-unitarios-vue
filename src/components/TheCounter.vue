@@ -7,16 +7,22 @@
     <button @click="increment" class="button bg-success">Incrementar</button>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-const count = ref(0)
-function increment() {
-  count.value++
-}
-function decrement() {
-  if (count.value > 0) {
-    count.value--
+<script>
+export default {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  methods: {
+    increment() {
+      this.count++
+    },
+    decrement() {
+      if (this.count > 0) {
+        this.count--
+      }
+    }
   }
 }
 </script>
