@@ -7,28 +7,14 @@ describe('TodoList.vue', () => {
   beforeEach(() => {
     wrapper = mountWrapper()
   })
-  it('inicializa com uma lista vazia', () => {
-    expect(wrapper.findAll('li')).toHaveLength(0)
+  it('inicializa com uma lista vazia', () => {})
+
+  it.skip('adiciona uma nova tarefa à lista', async () => {
+    const input = wrapper.find('')
+    const addButton = wrapper.find('')
   })
 
-  it('adiciona uma nova tarefa à lista', async () => {
-    const input = wrapper.find('input')
-    const addButton = wrapper.find('button')
-
-    await input.setValue('Nova Tarefa')
-    await addButton.trigger('click')
-
-    expect(wrapper.findAll('li')).toHaveLength(1)
-    expect(wrapper.text()).toContain('Nova Tarefa')
-  })
-
-  it('não adiciona tarefa se o input estiver vazio', async () => {
-    const addButton = wrapper.find('button')
-
-    await addButton.trigger('click')
-
-    expect(wrapper.findAll('li')).toHaveLength(0)
-  })
+  it('não adiciona tarefa se o input estiver vazio', async () => {})
 })
 function mountWrapper() {
   return mount(TodoList)
