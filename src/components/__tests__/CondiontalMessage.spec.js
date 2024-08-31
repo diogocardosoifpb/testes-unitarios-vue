@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import ConditionalMessage from '@/components/ConditionalMessage.vue'
 
 describe('ConditionalMessage.vue', () => {
@@ -24,6 +24,20 @@ describe('ConditionalMessage.vue', () => {
     await button.trigger('click')
     await button.trigger('click')
     expect(wrapper.text()).not.toContain('Esta é uma mensagem condicional!')
+  })
+  it('Should call method toggleMessage when button is clicked', async () => {
+    const toggleMessage = vi.spyOn(wrapper.vm, 'toggleMessage')
+    const button = wrapper.find('button')
+
+    await button.trigger('click')
+    expect(toggleMessage).toHaveBeenCalled()
+  })
+  it.fails('Should call method toggleMessage when button is clicked', async () => {
+    const toggleMessage = vi.spyOn(wrapper.vm, 'toggleMessage')
+    const button = wrapper.find('button')
+
+    await button.trigger('click')
+    expect(toggleMessage).not.toHaveBeenCalled()
   })
 })
 function mountWrapper() {
