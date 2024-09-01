@@ -1,37 +1,37 @@
 # testes-unitarios-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Repositório utilizado para a prática do minicurso Introdução a Teste Unitários apresentado no IFTech 2024 
 
-## Recommended IDE Setup
+| Ministrante | Linkedin |
+| ----------- | ----------- |
+| Diogo Cardoso | https://www.linkedin.com/in/digocardoso/ |
+| Ronaldo Filho | https://www.linkedin.com/in/ronaldo-filho-1515a918b/ |  
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### As soluções dos desafios encontram-se na branch `solution`
 
-## Customize configuration
+### Material utilizado em sala
+https://docs.google.com/presentation/d/1WbeCyn89dP_NTXB_eKrBW309NUVCrjGk-r9bdaPxth8/edit?usp=sharing
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Configuração do projeto
 
-## Project Setup
+- Utilizar Node na versão 18 ou maior
+
+### Instalar dependências
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Executar projeto
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Executar testes com [Vitest](https://vitest.dev/)
 
 ```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
+npm run test
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
